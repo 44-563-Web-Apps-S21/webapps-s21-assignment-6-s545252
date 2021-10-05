@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> phraseby Madhumitha Reddy</title>
+    <script>
+        var correct = 0, wrong = 0;
+        function processPhrase() {
+
+            secretphrase = document.getElementById("secretphrase").value
+            checkphrase = document.getElementById("checkphrase").value
+            if (secretphrase == checkphrase) {
+                correct = correct + 1;
+                document.getElementById("result").innerHTML = "Correct count " + correct;
+                alert("access allowed");
+            } else {
+
+                wrong = wrong + 1;
+                document.getElementById("result").innerHTML = "Wrong count " + wrong;
+                alert("access denied");
+            }
+        }
+        let usingImage = 1
+
+        function newImage(img) {
+            debugger;
+            switch (usingImage) {
+                case 1:
+                    document.getElementById("animals").src = "lion.jpg"
+                    usingImage++;
+                    break;
+                case 2:
+                    document.getElementById("animals").src = "dog.jpg"
+                    usingImage++;
+                    break;
+                default:
+                    usingImage = 1;
+                    document.getElementById("animals").src = "tiger.jpg"
+                    break;
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+
+    <h2>Pass pharse by Madhumitha Reddy</h2>
+
+    <form>
+        <label for="secretphrase">Enter the secret phrase </label>
+        <input type="password" id="secretphrase" name="secretphrase" value="Let me in"> <br>
+        <label for="checkphrase">Enter a phrase</label>
+        <input type="text" id="checkphrase" name="checkphrase" autofocus> <br>
+        <br>
+        <input type="button" onclick="processPhrase()" value="Check the phrase">
+    </form>
+
+    <p id="result">Attempts display here </p>
+
+    <div class="container">
+
+        <img src="dog.jpg" id="animals" alt="dog" style="height: 200px;" width="200px;" onclick="newImage(this)" />
+
+    </div>
+
+</body>
+
+</html>
