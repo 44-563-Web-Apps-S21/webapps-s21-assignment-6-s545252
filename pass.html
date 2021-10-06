@@ -3,27 +3,58 @@
 
 <head>
     <title> phraseby Madhumitha Reddy</title>
+    <style>
+        form {
+            background-color: lightpink;
+            border: solid black;
+        }
+
+        h1 {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Pass pharse by Madhumitha Reddy</h2>
+
+    <form>
+        <label for="secretphrase">Enter the secret phrase </label>
+        <input type="password" id="secretphrase" name="secretphrase" value="Let me in"> <br>
+        <label for="checkphrase">Enter a phrase</label>
+        <input type="text" id="checkphrase" name="checkphrase" autofocus> <br>
+        <br>
+        <input type="button" onclick="processPhrase()" value="Check the phrase">
+    </form>
+
+    <p id="result">This text will be replaced </p>
+
     <script>
-        var correct = 0, wrong = 0;
+        var correct = 0;
+        var wrong = 0;
+
         function processPhrase() {
-
-            secretphrase = document.getElementById("secretphrase").value
-            checkphrase = document.getElementById("checkphrase").value
-            if (secretphrase == checkphrase) {
-                correct = correct + 1;
-                document.getElementById("result").innerHTML = "Correct count " + correct;
-                alert("access allowed");
-            } else {
-
-                wrong = wrong + 1;
-                document.getElementById("result").innerHTML = "Wrong count " + wrong;
-                alert("access denied");
+            //console.log("Getting values of check &secret phrase")
+            cct = document.getElementById("secretphrase").value
+            rct = document.getElementById("checkphrase").value
+            out = document.getElementById("result")
+            if (cct == rct) {
+                correct = correct + 1
+                alert("Access Allowed")
             }
+            else {
+                wrong = wrong + 1
+                alert("Access Denied")
+                if (wrong > 3) {
+                    alert("account locked");
+                }
+            }
+
+            out.innerHTML = "Correct count : " + correct + " Wrong count : " + wrong
         }
         let usingImage = 1
-
         function newImage(img) {
-            debugger;
             switch (usingImage) {
                 case 1:
                     document.getElementById("animals").src = "lion.jpg"
@@ -41,23 +72,6 @@
         }
 
     </script>
-</head>
-
-<body>
-
-    <h2>Pass pharse by Madhumitha Reddy</h2>
-
-    <form>
-        <label for="secretphrase">Enter the secret phrase </label>
-        <input type="password" id="secretphrase" name="secretphrase" value="Let me in"> <br>
-        <label for="checkphrase">Enter a phrase</label>
-        <input type="text" id="checkphrase" name="checkphrase" autofocus> <br>
-        <br>
-        <input type="button" onclick="processPhrase()" value="Check the phrase">
-    </form>
-
-    <p id="result">Attempts display here </p>
-
     <div class="container">
 
         <img src="dog.jpg" id="animals" alt="dog" style="height: 200px;" width="200px;" onclick="newImage(this)" />
